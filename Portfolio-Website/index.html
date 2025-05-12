@@ -278,7 +278,99 @@
   opacity: 0;
   animation: fadeInUp 1s ease-out forwards;
 }
+  <!-- Particles Background -->
+  <div id="particles-js" class="fixed top-0 left-0 w-full h-full -z-10"></div>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 60,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#9c27b0"
+        },
+        "shape": {
+          "type": "circle"
+        },
+        "opacity": {
+          "value": 0.3,
+          "random": false
+        },
+        "size": {
+          "value": 4,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#9c27b0",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 0.4
+            }
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
 
+  <style>
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+    .project-card {
+      perspective: 1000px;
+    }
+    .project-card:hover {
+      transform-style: preserve-3d;
+      transform: rotateY(15deg) rotateX(5deg) scale(1.05);
+      box-shadow: 0 20px 30px rgba(156, 39, 176, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+  </style>
 
 </style>
 
@@ -444,99 +536,7 @@
 </section>
 
 
-  <!-- Particles Background -->
-  <div id="particles-js" class="fixed top-0 left-0 w-full h-full -z-10"></div>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS('particles-js', {
-      "particles": {
-        "number": {
-          "value": 60,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#9c27b0"
-        },
-        "shape": {
-          "type": "circle"
-        },
-        "opacity": {
-          "value": 0.3,
-          "random": false
-        },
-        "size": {
-          "value": 4,
-          "random": true
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#9c27b0",
-          "opacity": 0.2,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 2,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "grab"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 140,
-            "line_linked": {
-              "opacity": 0.4
-            }
-          },
-          "push": {
-            "particles_nb": 4
-          }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
 
-  <style>
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      top: 0;
-      left: 0;
-    }
-    .project-card {
-      perspective: 1000px;
-    }
-    .project-card:hover {
-      transform-style: preserve-3d;
-      transform: rotateY(15deg) rotateX(5deg) scale(1.05);
-      box-shadow: 0 20px 30px rgba(156, 39, 176, 0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-  </style>
 =======
  <!-- Projects Made Header OUTSIDE -->
 <h2 class="text-3xl font-bold mb-4 text-center text-[#f8c1dd] tracking-wide" style="text-shadow: none;">
@@ -586,119 +586,17 @@
   </div>
 </section>
 
-
-
-<!-- Add custom colors -->
 <style>
   .text-myblue {
     color: rgb(30, 90, 160);
   }
 </style>
-
-
-  
-  <!-- Certificates -->
-
-  <!-- Particles Background -->
-  <div id="particles-js" class="fixed top-0 left-0 w-full h-full -z-10"></div>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS('particles-js', {
-      "particles": {
-        "number": {
-          "value": 60,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#9c27b0"
-        },
-        "shape": {
-          "type": "circle"
-        },
-        "opacity": {
-          "value": 0.3,
-          "random": false
-        },
-        "size": {
-          "value": 4,
-          "random": true
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#9c27b0",
-          "opacity": 0.2,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 2,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "grab"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 140,
-            "line_linked": {
-              "opacity": 0.4
-            }
-          },
-          "push": {
-            "particles_nb": 4
-          }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
-
-  <style>
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      top: 0;
-      left: 0;
-    }
-    .project-card {
-      perspective: 1000px;
-    }
-    .project-card:hover {
-      transform-style: preserve-3d;
-      transform: rotateY(15deg) rotateX(5deg) scale(1.05);
-      box-shadow: 0 20px 30px rgba(156, 39, 176, 0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-  </style>
-
-  <!-- Activities Header OUTSIDE -->
+    
+<!-- Activities Section -->
 <h2 class="text-3xl font-bold mb-4 text-center text-[#f8c1dd] tracking-wide" style="text-shadow: none;">
   Activities
 </h2>
 
-<!-- Activities Section -->
 <section id="work" class="container mx-auto px-6 py-12 bg-gradient-to-br from-[rgba(255,105,180,0.1)] via-transparent to-[rgba(255,20,147,0.1)] rounded-3xl shadow-xl mb-12 max-w-5xl animate" 
          style="animation: slideInLeft 1s ease-out; box-shadow: 0 0 20px rgba(255, 105, 180, 0.264); backdrop-filter: blur(10px);">
   
@@ -716,12 +614,12 @@
 
 
 
- <!-- Certificates Header OUTSIDE -->
+<!-- Certificates Section -->
 <h2 class="text-3xl font-bold mb-8 text-center text-[#f8c1dd] tracking-wide" style="text-shadow: none;">
   Certificates
 </h2>
 
-<!-- Certificates Section -->
+
 <section id="certificates" class="container mx-auto px-6 py-12 bg-gradient-to-br from-[rgba(255,105,180,0.1)] via-transparent to-[rgba(255,20,147,0.1)] rounded-3xl shadow-xl mb-12 max-w-5xl animate" 
          style="animation: slideInLeft 1s ease-out; box-shadow: 0 0 20px rgba(255, 105, 180, 0.264); backdrop-filter: blur(10px);">
   
@@ -805,12 +703,12 @@
   }
 </style>
 
-  <!-- Contact Header OUTSIDE -->
+<!-- Contact Section -->
 <h2 class="text-3xl font-bold mb-4 text-center text-[#f8c1dd] tracking-wide" style="text-shadow: none;">
   Get in Touch
 </h2>
 
-<!-- Contact Section -->
+
 <section id="contact" class="container mx-auto px-6 py-12 bg-gradient-to-br from-[rgba(255,105,180,0.1)] via-transparent to-[rgba(255,20,147,0.1)] rounded-3xl shadow-xl mb-12 max-w-5xl animate" 
          style="animation: slideInLeft 1s ease-out; box-shadow: 0 0 20px rgba(255, 105, 180, 0.264); backdrop-filter: blur(10px);">
     <div class="flex flex-col md:flex-row items-center">
