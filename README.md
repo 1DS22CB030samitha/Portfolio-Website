@@ -5,10 +5,6 @@
 
 ---
 
-## 🖼️ Custom Banner
-
-![Banner Placeholder](assets/banner.png)
-
 
 ---![ab5](https://github.com/user-attachments/assets/1c9f2ccf-f7b7-4bb5-8adb-c33255db9445)
 
