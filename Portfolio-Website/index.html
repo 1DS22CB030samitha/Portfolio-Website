@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio | Samitha</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"
+   />
+  <script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-on-scroll');
+      }
+    });
+  });
+
+  document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+
+  // Scroll animation for navigation links
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+        // Optionally add animation class on scroll
+        targetSection.classList.add('animate-on-scroll');
+        setTimeout(() => {
+          targetSection.classList.remove('animate-on-scroll');
+        }, 1000); // Duration matches animation duration
+      }
+    });
+  });
+</script>
+
+  <style>
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+  }
+
+  /* Base styling */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #141218; /* dark plum */
+    color: #e0c8f2;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  a {
+    color: #c084fc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #ddaaff;
+  }
+
+  .pink-theme {
+    color: #db6fbb;
+  }
+
+  .bg-pink-light {
+    background-color: #1f1b24;
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid #2a2233;
+  }
+
+  .btn-pink {
+    background-color: #c084fc;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-pink:hover {
+    background-color: #b368f1;
+    transform: translateY(-2px);
+  }
+
+  /* Animation class */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+    animation-name: fadeInUp;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Particle canvas */
+  #particle-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Hero container */
+  #home {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  /* Headings and titles */
+  h1, h2, h3 {
+    color: #f0d9ff;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  /* Subtle card shadow */
+  .card {
+    background-color: #1f1b24;
+    border: 1px solid #2c2235;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Animations */
+@keyframes fadeInUpFixed {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUpFixed 1s ease-out forwards;
+}
+
+@keyframes fadeInUpSkills {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(60deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.fade-in-skills {
+  animation: fadeInUpSkills 1s ease-out forwards;
+}
+
+/* Skill Card Glow & Icon Madness */
+.skill-card {
+  background: linear-gradient(to bottom right, #fff1fb, #fce4ff);
+  border: 2px solid #ffd6f5;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px rgba(255, 190, 235, 0.4);
+}
+
+.skill-card:hover {
+  transform: scale(1.1) rotate(-1deg);
+  box-shadow: 0 0 25px #ff80bf, 0 0 15px #ffc8e1 inset;
+}
+
+.skill-icon {
+  transition: transform 0.4s ease-in-out;
+}
+
+.skill-card:hover .skill-icon {
+  transform: rotate(10deg) scale(1.2) translateY(-4px);
+}
+
+.outlined-text {
+  color: white;
+  position: relative;
+  text-shadow:
+    0 0 1px #ff69b4,
+    -1px -1px 0 #ff69b4,
+    1px -1px 0 #ff69b4,
+    -1px 1px 0 #ff69b4,
+    1px 1px 0 #ff69b4;
+}
+
+@keyframes softBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.page-break {
+  position: relative;
+  text-align: center;
+  margin: 50px 0;
+}
+
+.page-break::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 105, 180, 0.7), rgba(255, 20, 147, 0.7));
+}
+
+.page-break::after {
+  content: '⟶';
+  font-size: 30px;
+  color: #f8c1dd;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+.glass-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(255, 105, 180, 0.2);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+
+</style>
+
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-pink-light shadow-md sticky top-0 z-50">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <a href="#home" class="text-2xl font-bold pink-theme">Samitha</a>
+      <ul class="flex space-x-6 text-lg font-semibold">
+        <li><a href="#home" class="hover:text-pink-700">Home</a></li>
+        <li><a href="#about" class="hover:text-pink-700">About</a></li>
+        <li><a href="#skills" class="hover:text-pink-700">Skills</a></li>
+        <li><a href="#education" class="hover:text-pink-700">Education</a></li>
+        <li><a href="#work" class="hover:text-pink-700">Activities</a></li>
+        <li><a href="#certificates" class="hover:text-pink-700">Certificates</a></li>
+        <li><a href="#contact" class="hover:text-pink-700">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+ <section id="home" class="flex-grow container mx-auto px-6 py-16 flex flex-col md:flex-row items-center relative">
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="md:w-1/2 mb-10 md:mb-0 animate-on-scroll" style="animation-delay: 0.3s;">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4 relative z-10">
+      Hi There, <br />I'm <span class="pink-theme">Samitha</span>
+    </h1>
+    <p class="text-lg max-w-md relative z-10">
+      Full Stack Developer passionate about building web applications and improving coding skills.
+    </p>
+  </div>
+
+  <div class="md:w-1/2 flex justify-center animate-on-scroll" style="animation-delay: 0.6s; position: relative; z-index: 10;">
+    <img src="hero.png" alt="Hero Image" class="max-w-xs rounded-lg shadow-lg" />
+  </div>
+</section>
+
+  <<!-- About Me -->
+<section id="about" class="container mx-auto px-6 py-12 bg-gradient-to-br from-[rgba(255,105,180,0.1)] via-transparent to-[rgba(255,20,147,0.1)] rounded-3xl shadow-xl mb-12 max-w-5xl animate" 
+         style="animation: slideInLeft 1s ease-out; box-shadow: 0 0 20px rgba(255, 105, 180, 0.264); backdrop-filter: blur(10px);">
+  <h2 class="text-3xl font-bold mb-6 pink-theme">About Me</h2>
+  <div class="flex flex-col md:flex-row items-center">
+    <img src="profile.jpg" alt="Profile" class="w-48 h-48 rounded-full mb-6 md:mb-0 md:mr-8 object-cover border-4 border-[#2a2233] shadow-lg" />
+    <div class="text-[#e0c8f2]">
+      <h3 class="text-2xl font-semibold mb-2 text-[#f0d9ff]">I'm Samitha</h3>
+      <p class="mb-2">I’m a Computer Science and Business Systems student at Dayananda Sagar College of Engineering, blending tech skills with business insight. With experience in <strong>Java</strong>, <strong>Python</strong>, and <strong>web development</strong>, I’ve built practical tools like student and volunteer management systems. I value clean design, teamwork, and creating impactful solutions.</p>
+      <p class="mb-1"><strong>Email:</strong> mogaveersamitha@gmail.com</p>
+      <p class="mb-4"><strong>Location:</strong> Bengaluru, India</p>
+      <a href="https://drive.google.com/file/d/1aZFRjl7Cz-LKERn6lvt-ZothE8fKma_Z/view?usp=drivesdk" target="_blank" class="btn-pink">View Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- Skills & Abilities -->
+<section id="skills" class="max-w-6xl mx-auto px-6 py-12 fade-in-skills">
+  <h2 class="text-3xl font-bold mb-10 text-center pink-theme">Skills & Abilities</h2>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+    <!-- Each Skill -->
+    <a href="https://www.java.com/" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">Java</p>
+    </a>
+
+    <a href="https://www.python.org/" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">Python</p>
+    </a>
+
+    <a href="https://www.mysql.com/" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">SQL</p>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Database_management_system" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://cdn0.iconfinder.com/data/icons/big-data-80/50/67_Normalization_Dbms_rdbms_database_table_modern_technology_data_connection_data_storage_centralized_network_server-512.png" alt="DBMS" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">DBMS</p>
+    </a>
+
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">HTML</p>
+    </a>
+
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">CSS</p>
+    </a>
+
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">JavaScript</p>
+    </a>
+
+    <a href="https://git-scm.com/" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">Git</p>
+    </a>
+
+    <a href="https://github.com/" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">GitHub</p>
+    </a>
+
+    <a href="https://openai.com/" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://www.cprime.com/wp-content/uploads/2023/09/genai-workshop-icon-e1693958745626.png" alt="GenAI" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">GenAI</p>
+    </a>
+
+    <a href="https://huggingface.co/learn/nlp-course/chapter1" target="_blank" class="skill-card group rounded-2xl p-4 text-center">
+      <img src="https://img.icons8.com/color/96/artificial-intelligence.png" alt="LLMs" class="w-12 h-12 mx-auto skill-icon" />
+      <p class="mt-2 font-semibold text-[#8c007e] group-hover:text-[#b30095]">LLMs</p>
+    </a>
+  </div>
+</section>
+
+
+
+
+  <!-- My Education Header OUTSIDE -->
+<h2 class="text-3xl font-bold mb-4 text-center text-[#f8c1dd] tracking-wide" style="text-shadow: none;">
+  My Education
+</h2>
+
+<!-- Education Section -->
+<section id="education" class="container mx-auto px-6 py-12 bg-gradient-to-br from-[rgba(255,105,180,0.1)] via-transparent to-[rgba(255,20,147,0.1)] rounded-3xl shadow-xl mb-12 max-w-5xl animate"
+         style="animation: slideInLeft 1s ease-out; box-shadow: 0 0 20px rgba(255, 105, 180, 0.264); backdrop-filter: blur(10px);">
+
+  <p class="mb-10 italic text-center text-lg text-white">
+    “Education is not the learning of facts, but the training of the mind to think.”
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-10">
+
+    <!-- College Card -->
+    <div class="flex items-center bg-white/80 hover:bg-white rounded-2xl p-5 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl border border-pink-100 backdrop-blur">
+      <div class="relative">
+        <img src="http://comedk.org/uploads/logo-21.png" alt="College" class="w-24 h-24 rounded-xl object-cover border-4 border-pink-200 shadow-md" />
+      </div>
+      <div class="ml-5">
+        <h3 class="text-xl font-bold text-gray-800">Bachelor of Engineering in IT</h3>
+        <p class="text-gray-700 font-medium">Dayanand Sagar College of Engineering | SPPU</p>
+        <p class="text-sm text-pink-500 mt-1">2022 - 2026 | Pursuing</p>
+      </div>
+    </div>
+
+    <!-- School Card -->
+    <div class="flex items-center bg-white/80 hover:bg-white rounded-2xl p-5 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl border border-pink-100 backdrop-blur">
+      <div class="relative">
+        <img src="https://internationalschoolsinbangkok.com/wp-content/uploads/2019/01/globalindianschool.png" alt="School" class="w-24 h-24 rounded-xl object-cover border-4 border-pink-200 shadow-md" />
+      </div>
+      <div class="ml-5">
+        <h3 class="text-xl font-bold text-gray-800">HSC Science | PCM</h3>
+        <p class="text-gray-700 font-medium">Global Indian International School | CBSE</p>
+        <p class="text-sm text-pink-500 mt-1">2022 | Completed</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Particles Background -->
+  <div id="particles-js" class="fixed top-0 left-0 w-full h-full -z-10"></div>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 60,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#9c27b0"
+        },
+        "shape": {
+          "type": "circle"
+        },
+        "opacity": {
+          "value": 0.3,
+          "random": false
+        },
+        "size": {
+          "value": 4,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#9c27b0",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 0.4
+            }
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+
+  <style>
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+    .project-card {
+      perspective: 1000px;
+    }
+    .project-card:hover {
+      transform-style: preserve-3d;
+      transform: rotateY(15deg) rotateX(5deg) scale(1.05);
+      box-shadow: 0 20px 30px rgba(156, 39, 176, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+  </style>
+=======
+ <!-- Projects Made Header OUTSIDE -->
+<h2 class="text-3xl font-bold mb-4 text-center text-[#f8c1dd] tracking-wide" style="text-shadow: none;">
+  Projects Made
+</h2>
+
+<!-- Projects Section -->
+<section id="projects" class="container mx-auto px-6 py-12 bg-gradient-to-br from-[rgba(255,105,180,0.1)] via-transparent to-[rgba(255,20,147,0.1)] rounded-3xl shadow-xl mb-12 max-w-5xl animate" 
+         style="animation: slideInLeft 1s ease-out; box-shadow: 0 0 20px rgba(255, 105, 180, 0.264); backdrop-filter: blur(10px);">
+
+  <a href="/projects" class="text-pink-700 underline mb-6 inline-block text-center w-full text-lg font-semibold hover:text-pink-900 transition-all duration-300">
+    View All
+  </a>
+  
+  <div id="projects-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- Project 1 -->
+    <div class="project-card bg-white rounded-xl shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer active:scale-95 hover:shadow-pink-500/50">
+      <img src="https://python-hub.com/wp-content/uploads/2023/01/final-look-of-calc-app.png" alt="Graphical User Interface Calculator Demo" class="w-full h-48 object-cover rounded-t-xl">
+      <div class="p-6">
+        <h3 class="text-2xl font-semibold mb-3 text-pink-600">Graphical User Interface Calculator</h3>
+        <p class="text-gray-700 mb-4">A simple GUI-based calculator built in Java, supporting basic arithmetic operations like addition, subtraction, multiplication, division, and advanced functions.</p>
+        <a href="https://github.com/example/project1" target="_blank" class="mt-4 inline-block text-pink-700 underline">View Code</a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card bg-white rounded-xl shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer active:scale-95 hover:shadow-pink-500/50">
+      <img src="https://tse1.mm.bing.net/th?id=OIP.rKowflgqEoP8QJ8TnkR8iQHaEK&pid=Api&P=0&h=220" alt="Sales Forecast System Demo" class="w-full h-48 object-cover rounded-t-xl">
+      <div class="p-6">
+        <h3 class="text-2xl font-semibold mb-3 text-pink-600">Sales Forecast System</h3>
+        <p class="text-gray-700 mb-4">A Python-based sales forecast tracker that analyzes past sales data and predicts future trends using linear regression, with a user-friendly GUI and data visualization.</p>
+        <a href="https://github.com/example/project2" target="_blank" class="mt-4 inline-block text-pink-700 underline">View Code</a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card bg-white rounded-xl shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer active:scale-95 hover:shadow-pink-500/50">
+      <img src="https://cdn.dribbble.com/users/6175319/screenshots/14416250/media/f993d953e7e8ee020d2785f19764ca8c.png" alt="Personal Portfolio Website Demo" class="w-full h-48 object-cover rounded-t-xl">
+      <div class="p-6">
+        <h3 class="text-2xl font-semibold mb-3 text-pink-600">Personal Portfolio Website</h3>
+        <p class="text-gray-700 mb-4">Created a responsive website to showcase resume, contact info, and project links using clean UI/UX principles for optimal user experience.</p>
+        <a href="https://github.com/example/project3" target="_blank" class="mt-4 inline-block text-pink-700 underline">View Code</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Add custom colors -->
+<style>
+  .text-myblue {
+    color: rgb(30, 90, 160);
+  }
+</style>
+
+
+  
+  <!-- Certificates -->
+
+  <!-- Particles Background -->
+  <div id="particles-js" class="fixed top-0 left-0 w-full h-full -z-10"></div>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 60,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#9c27b0"
+        },
+        "shape": {
+          "type": "circle"
+        },
+        "opacity": {
+          "value": 0.3,
+          "random": false
+        },
+        "size": {
+          "value": 4,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#9c27b0",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 0.4
+            }
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+
+  <style>
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+    .project-card {
+      perspective: 1000px;
+    }
+    .project-card:hover {
+      transform-style: preserve-3d;
+      transform: rotateY(15deg) rotateX(5deg) scale(1.05);
+      box-shadow: 0 20px 30px rgba(156, 39, 176, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- Activities Header OUTSIDE -->
+<h2 class="text-3xl font-bold mb-4 text-center text-[#f8c1dd] tracking-wide" style="text-shadow: none;">
+  Activities
+</h2>
+
+<!-- Activities Section -->
+<section id="work" class="container mx-auto px-6 py-12 bg-gradient-to-br from-[rgba(255,105,180,0.1)] via-transparent to-[rgba(255,20,147,0.1)] rounded-3xl shadow-xl mb-12 max-w-5xl animate" 
+         style="animation: slideInLeft 1s ease-out; box-shadow: 0 0 20px rgba(255, 105, 180, 0.264); backdrop-filter: blur(10px);">
+  
+  <p class="mb-10 italic text-center text-lg text-white">Engaging in impactful roles to grow and innovate.</p>
+  
+  <ul class="list-disc list-inside space-y-4 max-w-xl mx-auto">
+    <li class="transition-transform duration-300 transform hover:scale-105 hover:text-pink-600">
+      <strong class="font-semibold text-xl text-pink-500">JAVA Developer</strong> - Self Employed (Oct 2022 - Present)
+    </li>
+    <li class="transition-transform duration-300 transform hover:scale-105 hover:text-pink-600">
+      <strong class="font-semibold text-xl text-pink-500">AI Internship</strong> - Nvidia
+    </li>
+  </ul>
+</section>
+
+
+
+ <!-- Certificates Header OUTSIDE -->
+<h2 class="text-3xl font-bold mb-8 text-center text-[#f8c1dd] tracking-wide" style="text-shadow: none;">
+  Certificates
+</h2>
+
+<!-- Certificates Section -->
+<section id="certificates" class="container mx-auto px-6 py-12 bg-gradient-to-br from-[rgba(255,105,180,0.1)] via-transparent to-[rgba(255,20,147,0.1)] rounded-3xl shadow-xl mb-12 max-w-5xl animate" 
+         style="animation: slideInLeft 1s ease-out; box-shadow: 0 0 20px rgba(255, 105, 180, 0.264); backdrop-filter: blur(10px);">
+  
+  <!-- Certificates Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <!-- Certificate 1 -->
+    <div class="certificate-card cursor-pointer bg-white rounded-lg overflow-hidden shadow-lg border border-pink-300 transform transition-all hover:scale-105 hover:shadow-xl">
+      <div class="aspect-w-1 aspect-h-1 relative">
+        <img src="certificate1.jpg" alt="Certificate 1" class="absolute inset-0 w-full h-full object-cover rounded-lg">
+      </div>
+      <div class="bg-pink-50 text-center py-4 px-6 text-pink-700 font-semibold text-xl">
+        AI Infrastructure and Operations Fundamentals — NVIDIA
+      </div>
+    </div>
+
+    <!-- Certificate 2 -->
+    <div class="certificate-card cursor-pointer bg-white rounded-lg overflow-hidden shadow-lg border border-pink-300 transform transition-all hover:scale-105 hover:shadow-xl">
+      <div class="aspect-w-1 aspect-h-1 relative">
+        <img src="certificate2.jpg" alt="Certificate 2" class="absolute inset-0 w-full h-full object-cover rounded-lg">
+      </div>
+      <div class="bg-pink-50 text-center py-4 px-6 text-pink-700 font-semibold text-xl">
+        Corporate Culture and Behaviors — CIL
+      </div>
+    </div>
+
+    <!-- Certificate 3 -->
+    <div class="certificate-card cursor-pointer bg-white rounded-lg overflow-hidden shadow-lg border border-pink-300 transform transition-all hover:scale-105 hover:shadow-xl">
+      <div class="aspect-w-1 aspect-h-1 relative">
+        <img src="certificate3.jpg" alt="Certificate 3" class="absolute inset-0 w-full h-full object-cover rounded-lg">
+      </div>
+      <div class="bg-pink-50 text-center py-4 px-6 text-pink-700 font-semibold text-xl">
+        Dynamic Skills Integrated Program — CIL
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Modal Script -->
+<script>
+  // Modal functionality for certificates
+  const certificates = document.querySelectorAll('.certificate-card');
+  certificates.forEach(card => {
+    card.addEventListener('click', () => {
+      const imgSrc = card.querySelector('img').src;
+      openModal(imgSrc);
+    });
+  });
+
+  function openModal(src) {
+    let modal = document.getElementById('modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'modal';
+      modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 cursor-pointer';
+      modal.innerHTML = '<img class="max-w-4xl max-h-full rounded-lg shadow-lg" src="" alt="Certificate" />';
+      document.body.appendChild(modal);
+      modal.addEventListener('click', () => {
+        modal.remove();
+      });
+    }
+    modal.querySelector('img').src = src;
+  }
+</script>
+
+<!-- Styles -->
+<style>
+  .certificate-card .aspect-w-1 {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Makes it a perfect square */
+  }
+  .certificate-card:hover {
+    box-shadow: 0 0 15px rgba(156, 39, 176, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .certificate-card img {
+    border-radius: 0.5rem;
+  }
+</style>
+
+  <!-- Contact Header OUTSIDE -->
+<h2 class="text-3xl font-bold mb-4 text-center text-[#f8c1dd] tracking-wide" style="text-shadow: none;">
+  Get in Touch
+</h2>
+
+<!-- Contact Section -->
+<section id="contact" class="container mx-auto px-6 py-12 bg-gradient-to-br from-[rgba(255,105,180,0.1)] via-transparent to-[rgba(255,20,147,0.1)] rounded-3xl shadow-xl mb-12 max-w-5xl animate" 
+         style="animation: slideInLeft 1s ease-out; box-shadow: 0 0 20px rgba(255, 105, 180, 0.264); backdrop-filter: blur(10px);">
+    <div class="flex flex-col md:flex-row items-center">
+      <img src="profile.jpg" alt="Contact" class="w-48 h-48 rounded-lg mb-6 md:mb-0 md:mr-8 object-cover" />
+      <div class="flex-grow">
+        <p class="mb-2">Thank you for visiting my personal portfolio website. Connect with me over socials.</p>
+        <p class="mb-2">Keep Rising 🚀. Connect with me over live chat!</p>
+        <p class="font-semibold">Contact Info:</p>
+        <p>+91 79812 81321</p>
+        <p>mogaveersamitha@gmail.com</p>
+        <p>Bengaluru, India - </p>
+        <div class="mt-4 space-x-4">
+          <a href="https://www.linkedin.com/in/jigar-sable" target="_blank" class="underline">LinkedIn</a>
+          <a href="https://github.com/jigar-sable" target="_blank" class="underline">GitHub</a>
+          <a href="mailto:samitha@example.com" class="underline">Email</a>
+          <a href="https://twitter.com/jigar_sable" target="_blank" class="underline">Twitter</a>
+          <a href="https://t.me/lifecode5" target="_blank" class="underline">Telegram</a>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-pink-light py-6 mt-auto">
+    <div class="container mx-auto px-6 text-center text-sm text-gray-700">
+      <p>quick links</p>
+      <p class="mb-4">
+        <a href="#home" class="mx-1 hover:text-pink-700">home</a>
+        <a href="#about" class="mx-1 hover:text-pink-700">about</a>
+        <a href="#skills" class="mx-1 hover:text-pink-700">skills</a>
+        <a href="#education" class="mx-1 hover:text-pink-700">education</a>
+        <a href="#work" class="mx-1 hover:text-pink-700">work</a>
+        <a href="#certificates" class="mx-1 hover:text-pink-700">certificates</a>
+        <a href="#contact" class="mx-1 hover:text-pink-700">contact</a>
+      </p>
+      <p class="mb-2">contact info</p>
+      <p>+91 79812 81321</p>
+      <p>mogaveersamitha@gmail.com</p>
+      <p>Bengaluru, India - </p>
+      <p class="mt-4 font-bold">Designed with by Samitha  </p>
+    </div>
+  </footer>
+
+</body>
+</html>
